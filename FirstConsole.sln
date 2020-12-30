@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstConsole", "FirstConsole\FirstConsole.csproj", "{EB4D8C51-F711-4917-BBCB-1B6F10C95F01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorConsole", "CalculatorConsole\CalculatorConsole.csproj", "{8F5E8601-A4AE-47EB-A82A-5D7A9FB4D08E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Media Aritmetica", "Media Aritmetica\Media Aritmetica.csproj", "{77A252DE-8CCE-4B4D-B7A8-8B95DB2A7E26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{EB4D8C51-F711-4917-BBCB-1B6F10C95F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB4D8C51-F711-4917-BBCB-1B6F10C95F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB4D8C51-F711-4917-BBCB-1B6F10C95F01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F5E8601-A4AE-47EB-A82A-5D7A9FB4D08E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F5E8601-A4AE-47EB-A82A-5D7A9FB4D08E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F5E8601-A4AE-47EB-A82A-5D7A9FB4D08E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F5E8601-A4AE-47EB-A82A-5D7A9FB4D08E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77A252DE-8CCE-4B4D-B7A8-8B95DB2A7E26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77A252DE-8CCE-4B4D-B7A8-8B95DB2A7E26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77A252DE-8CCE-4B4D-B7A8-8B95DB2A7E26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77A252DE-8CCE-4B4D-B7A8-8B95DB2A7E26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
