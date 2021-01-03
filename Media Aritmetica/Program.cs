@@ -41,7 +41,7 @@ namespace Media_Aritmetica
         private static double Suma(int count)
         {
             double suma = 0;
-            string[] numere = new string[count]; 
+            string[] numere = new string[count];
             double termen = 0;
 
             Console.WriteLine($"Write the {count} numbers:");
