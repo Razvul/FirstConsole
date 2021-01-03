@@ -13,18 +13,29 @@ namespace CNP
             Console.WriteLine("Introduceti CNP:");
             string cuvant = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(cuvant))
+            if(VerificaCNP(cuvant))
+            {
+                Console.WriteLine("CNP este valid");
+            }
+            else
             {
                 Console.WriteLine("CNP nu este valid");
-                return;
+            }
+        }
+
+        private static bool VerificaCNP(string cuvant)
+        {
+            if (string.IsNullOrEmpty(cuvant))
+            {
+                return false;
             }
 
             if (cuvant.Length != 13)
             {
-                Console.WriteLine("CNP nu este valid");
-                return;
+                //
+                return false;
             }
-            
+
             int[] cnp = new int[13];
 
             for (int i = 0; i < cuvant.Length; i++)
@@ -37,8 +48,7 @@ namespace CNP
                 }
                 else
                 {
-                    Console.WriteLine("CNP nu este valid");
-                    return;
+                    return false;
                 }
             }
 
@@ -59,15 +69,16 @@ namespace CNP
             {
                 result = suma % 11;
             }
-            
+
             if (result == cifraControl)
             {
-                Console.WriteLine("CNP este corect");
+                return true;
             }
             else
             {
-                Console.WriteLine("CNP nu este corect");
+                return false;
             }
+
         }
         public static bool IsNumber(string numar)
         {
