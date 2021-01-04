@@ -308,13 +308,40 @@ namespace CNP
             return anulNasterii;
         }
 
-        private static string LunaNasterii(string cuvant)
+       private static string LunaNasterii(string cuvant)
         {
             var x = cuvant.Substring(3, 2);
             int luna_numar = int.Parse(x);
             string luna_cuvant;
+            switch (luna_numar)
+            {
+                case 1: return luna_cuvant = "Ianuarie";
+                case 2: return luna_cuvant = "Februarie";
+                case 3: return luna_cuvant = "Martie";
+                case 4: return luna_cuvant = "Aprilie";
+                case 5: return luna_cuvant = "Mai";
+                case 6: return luna_cuvant = "Iunie";
+                case 7: return luna_cuvant = "Iulie";
+                case 8: return luna_cuvant = "August";
+                case 9: return luna_cuvant = "Septembrie";
+                case 10: return luna_cuvant = "Octombrie";
+                case 11: return luna_cuvant = "Noiembrie";
+                case 12: return luna_cuvant = "Decembrie";
+                default: return luna_cuvant = "Luna gresita";
+            }
+        }
 
-            switch(luna_numar)
+        private static string LunaNasterii1(string cuvant)
+        {
+            // de obicei nu se face return in switch 
+            // poti sa o faci doar cand functia se termina cu switch 
+            // motoda de mai jos este cea mai des utilizata
+
+            var x = cuvant.Substring(3, 2);
+            int luna_numar = int.Parse(x);
+            string luna_cuvant;
+
+            switch (luna_numar)
             {
                 case 1:
                     luna_cuvant = "ianuarie";
@@ -360,35 +387,18 @@ namespace CNP
             return luna_cuvant;
         }
 
-        private static string LunaNasterii1(string cuvant)
-        {
-            var x = cuvant.Substring(3, 2);
-            int luna_numar = int.Parse(x);
-            string luna_cuvant;
-            switch (luna_numar)
-            {
-                case 1: return luna_cuvant = "Ianuarie";
-                case 2: return luna_cuvant = "Februarie";
-                case 3: return luna_cuvant = "Martie";
-                case 4: return luna_cuvant = "Aprilie";
-                case 5: return luna_cuvant = "Mai";
-                case 6: return luna_cuvant = "Iunie";
-                case 7: return luna_cuvant = "Iulie";
-                case 8: return luna_cuvant = "August";
-                case 9: return luna_cuvant = "Septembrie";
-                case 10: return luna_cuvant = "Octombrie";
-                case 11: return luna_cuvant = "Noiembrie";
-                case 12: return luna_cuvant = "Decembrie";
-                default: return luna_cuvant = "Luna gresita";
-            }
-        }
 
+
+        // aici totul este ok
+        // nu trebuie sa facem nici o modificare
         private static int ZiuaNasterii(string cuvant)
         {
             var x = cuvant.Substring(5, 2);
             int ziua = int.Parse(x);
             return ziua;
         }
+
+        // pentru functa asta uitate in "Cnptest2.cs/GetJudetFromNumber(int judetNumber)"
 
         //private static string Judetul(int numar)
         //{
