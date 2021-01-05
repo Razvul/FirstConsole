@@ -306,8 +306,32 @@ namespace CNP
 
             try
             {
-                string judet = coduri.Split('\n')[judetNumber].Split(new string[] { "  " },
-                        StringSplitOptions.RemoveEmptyEntries)[1].Trim();
+                // split imi divide string intr-un array de string dupa separator "\n"
+                // vezi in debug ce vine salvat in arrayCoduri
+                string[] arrayCoduri = coduri.Split('\n');
+
+                // aici selectez pozitia in arrayCoduri si o salvez in judetComplet
+                // rezultatu este ceva de genul => "07 Botosani"
+                string judetComplet = arrayCoduri[judetNumber];
+
+                // split imi divide string "judetComplet" intr-un array de string dupa separator " " (spatiu)
+                // vezi in debug ce vine salvat in judetSelectionatArray
+                // trebuie sa fie ceva de genul:
+                // [0] 07
+                // [1] Botosani\r
+                string[] judetSelectionatArray = judetComplet.Split(new string[] {" "}, StringSplitOptions.RemoveEmptyEntries);
+
+                // selectionez array pozitie 1 pentru a salva judetul
+                // fuctia Trim() de la sfarsit imi sterge toate spatiile daca sunt prezente 
+                // in cazul nostru \r
+                string judet = judetSelectionatArray[1].Trim();
+
+
+                // acelasi lucru scris intr-o singura linie
+
+                //string judet = coduri.Split('\n')[judetNumber].Split(new string[] { "  " },
+                //        StringSplitOptions.RemoveEmptyEntries)[1].Trim();
+                
                 return judet;
             }
             catch (Exception)
