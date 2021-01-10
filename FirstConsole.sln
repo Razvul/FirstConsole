@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorulMeu", "Calculat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNP", "CNP\CNP.csproj", "{8BEB4635-C6EF-47FA-A148-CCE6AC719895}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFirsrtWinForm", "MyFirsrtWinForm\MyFirsrtWinForm.csproj", "{9DB03FC0-E7B3-4232-80DA-C6EE681BF7AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{8BEB4635-C6EF-47FA-A148-CCE6AC719895}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BEB4635-C6EF-47FA-A148-CCE6AC719895}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BEB4635-C6EF-47FA-A148-CCE6AC719895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DB03FC0-E7B3-4232-80DA-C6EE681BF7AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DB03FC0-E7B3-4232-80DA-C6EE681BF7AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DB03FC0-E7B3-4232-80DA-C6EE681BF7AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DB03FC0-E7B3-4232-80DA-C6EE681BF7AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
