@@ -12,15 +12,51 @@ namespace MyFirsrtWinForm
 {
     public partial class Form1 : Form
     {
+        private const string ErrorNumber = "What the !@#$ is this? This ain't no number!";
+        private const string CorrectNumber = "Corect";
+
+        private bool isCorrectNumber;
+
+
         public Form1()
         {
             InitializeComponent();
            
         }
 
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            EnableCalculeazaButton(false);
+            ClearLabels();
+
+        }
+
+
+        #region Text Box Number
+
+        private void textBox_Numar1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EnableCalculeazaButton(false);
+            ClearLabels();
+        }
+
+        private void textBox_Numar2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EnableCalculeazaButton(false);
+            ClearLabels();
+        }
+
+
+        #endregion
+
+
+
+
+
         private void button_Calculeaza_Click(object sender, EventArgs e)
         {
-            label_Adunare.Text = Adunare(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
+            label_adunare_value.Text = Adunare(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
 
             label_Scadere.Text = Scadere(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
 
@@ -33,39 +69,46 @@ namespace MyFirsrtWinForm
         {
             if (IsNumber(textBox_Numar1.Text))
             {
-                label_Check1.Text = "Corect";
+                label_Check1.Text = CorrectNumber;
             }
             else
             {
-                label_Check1.Text = "What the !@#$ is this? This ain't no number!";
+                label_Check1.Text = ErrorNumber;
             }
 
             if (IsNumber(textBox_Numar2.Text))
             {
-                label_Check2.Text = "Corect";
+                label_Check2.Text = CorrectNumber;
             }
             else
             {
-                label_Check2.Text = "What the !@#$ is this? This ain't no number!";
+                label_Check2.Text = ErrorNumber;
             }
+
+
+            if (label_Check1.Text == CorrectNumber && label_Check2.Text == CorrectNumber)
+            {
+                button_Calculeaza.Enabled = true;
+            }
+
         }
 
         private static string Adunare(double numar1, double numar2)
         {
             var suma = numar1 + numar2;
-            return $"Suma este: {suma.ToString()}";
+            return $"{suma}";
         }
 
-        private static string Scadere(double numar1, double numar2)
+        private static double Scadere(double numar1, double numar2)
         {
             var diferenta = numar1 - numar2;
-            return $"Diferenta este: {diferenta.ToString()}";
+            return diferenta;
         }
 
         private static string Inmultire(double numar1, double numar2)
         {
             var produs = numar1 * numar2;
-            return $"Produsul este: {produs.ToString()}";
+            return $"Produsul este: {produs}";
         }
 
         private static string Impartire(double numar1, double numar2)
@@ -80,15 +123,32 @@ namespace MyFirsrtWinForm
 
         private void button_Clear_Click(object sender, EventArgs e)
         {
-            textBox_Numar1.Text = string.Empty;
-            textBox_Numar2.Text = string.Empty;
-            label_Adunare.Text = string.Empty;
+            ClearAll();
+        }
+
+        private void ClearLabels()
+        {
+            label_adunare_value.Text = string.Empty;
             label_Scadere.Text = string.Empty;
             label_Inmultire.Text = string.Empty;
             label_Impartire.Text = string.Empty;
             label_Check1.Text = string.Empty;
             label_Check2.Text = string.Empty;
+
         }
+
+        private void ClearTextBox()
+        {
+            textBox_Numar1.Text = string.Empty;
+            textBox_Numar2.Text = string.Empty;
+        }
+
+        private void ClearAll()
+        {
+            ClearTextBox();
+            ClearLabels();
+        }
+
 
         private bool IsNumber(string cuvant)
         {
@@ -119,5 +179,13 @@ namespace MyFirsrtWinForm
             var corect = double.TryParse(cuvant, out double numar);
             return numar;
         }
+
+
+        private void EnableCalculeazaButton(bool value)
+        {
+            button_Calculeaza.Enabled = value;
+        }
+
+
     }
 }
