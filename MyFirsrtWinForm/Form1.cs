@@ -56,13 +56,15 @@ namespace MyFirsrtWinForm
 
         private void button_Calculeaza_Click(object sender, EventArgs e)
         {
-            label_adunare_value.Text = Adunare(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
+            label_Adunare_value.Text = Adunare(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
 
-            label_Scadere.Text = Scadere(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
+            label_Scadere_value.Text = Scadere(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
 
-            label_Inmultire.Text = Inmultire(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
+            label_Inmultire_value.Text = Inmultire(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
 
-            label_Impartire.Text = Impartire(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
+            label_Impartire_value.Text = Impartire(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
+
+            EnableCalculeazaButton(false);
         }
 
         private void button_Verifica_Click(object sender, EventArgs e)
@@ -105,20 +107,21 @@ namespace MyFirsrtWinForm
             return diferenta;
         }
 
-        private static string Inmultire(double numar1, double numar2)
+        private static double Inmultire(double numar1, double numar2)
         {
             var produs = numar1 * numar2;
-            return $"Produsul este: {produs}";
+            return produs;
         }
 
         private static string Impartire(double numar1, double numar2)
         {
             if(numar2==0)
             {
-                return "Nu poti imparti la 0";
+
+                return "Nu poti imparti la zero!";
             }
             var cat = numar1 / numar2;
-            return $"Catul este: {cat.ToString()}";
+            return cat.ToString();
         }
 
         private void button_Clear_Click(object sender, EventArgs e)
@@ -128,10 +131,10 @@ namespace MyFirsrtWinForm
 
         private void ClearLabels()
         {
-            label_adunare_value.Text = string.Empty;
-            label_Scadere.Text = string.Empty;
-            label_Inmultire.Text = string.Empty;
-            label_Impartire.Text = string.Empty;
+            label_Adunare_value.Text = string.Empty;
+            label_Scadere_value.Text = string.Empty;
+            label_Inmultire_value.Text = string.Empty;
+            label_Impartire_value.Text = string.Empty;
             label_Check1.Text = string.Empty;
             label_Check2.Text = string.Empty;
 
