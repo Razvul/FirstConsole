@@ -17,19 +17,20 @@ namespace MyFirsrtWinForm
 
         private bool isCorrectNumber;
 
+        private Operatii _opt = new Operatii();
+
+        
 
         public Form1()
         {
             InitializeComponent();
-           
         }
 
-
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             EnableCalculeazaButton(false);
             ClearLabels();
-
         }
 
 
@@ -56,6 +57,9 @@ namespace MyFirsrtWinForm
 
         private void button_Calculeaza_Click(object sender, EventArgs e)
         {
+
+            label_Adunare_value.Text = $@"{_opt.Adunare()}";
+
             label_Adunare_value.Text = Adunare(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
 
             label_Scadere_value.Text = Scadere(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
@@ -91,6 +95,14 @@ namespace MyFirsrtWinForm
             if (label_Check1.Text == CorrectNumber && label_Check2.Text == CorrectNumber)
             {
                 button_Calculeaza.Enabled = true;
+                _opt.Numar1 = double.Parse(textBox_Numar1.Text);
+                _opt.Numar2 = double.Parse(textBox_Numar2.Text);
+            }
+            else
+            {
+                // nu imi trebuie pentru ca butonul de calculeaza = disable
+                //_opt.Numar1 = 0;
+                //_opt.Numar2 = 0;
             }
 
         }

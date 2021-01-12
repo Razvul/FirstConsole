@@ -14,9 +14,11 @@ namespace CalculatorulMeu
             double numar2 = 5;
             string operatie = "-";
 
-            Operatii Calculator = new Operatii(numar1, numar2, operatie);
+            Operatii Calculator = new Operatii(numar1, numar2);
 
-            Console.WriteLine($"{Calculator.Operatie(numar1, numar2, operatie)}");
+            Console.WriteLine($"{Calculator.Adunare()}");
+
+
 
             //    while (ok)
             //    {

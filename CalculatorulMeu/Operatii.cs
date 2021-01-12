@@ -8,18 +8,16 @@ namespace CalculatorulMeu
 {
     public class Operatii
     {
-        double _numar1;
-        double _numar2;
-        string _operatie;
+        private double _numar1;
+        private double _numar2;
 
-        public Operatii(double numar1, double numar2, string operatie)
+        public Operatii(double numar1, double numar2)
         {
             _numar1 = numar1;
             _numar2 = numar2;
-            _operatie = operatie;
         }
 
-        public double Operatie(double numar1, double numar2, string operatie)
+        private double Operatie(string operatie)
         {
             bool ok = true;
             double expresie = 0;
@@ -29,24 +27,24 @@ namespace CalculatorulMeu
                 {
                     case "+":
                         ok = false;
-                        expresie = numar1 + numar2;
-                        Console.WriteLine($"Suma dintre {numar1} si {numar2} este:");
+                        expresie = _numar1 + _numar2;
+                        Console.WriteLine($"Suma dintre {_numar1} si {_numar2} este:");
                         break;
                     case "-":
-                        expresie = numar1 - numar2;
-                        Console.WriteLine($"Diferenta dintre {numar1} si {numar2} este:");
+                        expresie = _numar1 - _numar2;
+                        Console.WriteLine($"Diferenta dintre {_numar1} si {_numar2} este:");
                         ok = false;
                         break;
                     case "*":
-                        expresie = numar1 * numar2;
-                        Console.WriteLine($"Produsul dintre {numar1} si {numar2} este:");
+                        expresie = _numar1 * _numar2;
+                        Console.WriteLine($"Produsul dintre {_numar1} si {_numar2} este:");
                         ok = false;
                         break;
                     case "/":
-                        if (numar2 != 0)
+                        if (_numar2 != 0)
                         {
-                            expresie = numar1 / numar2;
-                            Console.WriteLine($"Catul dintre {numar1} si {numar2} este:");
+                            expresie = _numar1 / _numar2;
+                            Console.WriteLine($"Catul dintre {_numar1} si {_numar2} este:");
                             ok = false;
                             break;
                         }
@@ -64,6 +62,13 @@ namespace CalculatorulMeu
             }
             return expresie;
         }
+
+
+        public double Adunare()
+        {
+            return Operatie("+");
+        }
+
 
         private static bool IsNumber(string cuvant)
         {
