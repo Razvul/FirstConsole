@@ -17,7 +17,7 @@ namespace MyFirsrtWinForm
 
         private bool isCorrectNumber;
 
-        private Operatii _opt = new Operatii();
+        //Operatii Calculator = new Operatii(textBox_Numar1.Text, numar2);
 
         
 
@@ -53,20 +53,18 @@ namespace MyFirsrtWinForm
 
 
 
-
-
         private void button_Calculeaza_Click(object sender, EventArgs e)
         {
 
-            label_Adunare_value.Text = $@"{_opt.Adunare()}";
+            //label_Adunare_value.Text = $@"{_opt.Adunare()}";
 
-            label_Adunare_value.Text = Adunare(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
+            label_Adunare_value.Text = Operatii.Adunare(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
 
-            label_Scadere_value.Text = Scadere(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
+            label_Scadere_value.Text = Operatii.Scadere(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
 
-            label_Inmultire_value.Text = Inmultire(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
+            label_Inmultire_value.Text = Operatii.Inmultire(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
 
-            label_Impartire_value.Text = Impartire(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
+            label_Impartire_value.Text = Operatii.Impartire(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
 
             EnableCalculeazaButton(false);
         }
@@ -95,8 +93,8 @@ namespace MyFirsrtWinForm
             if (label_Check1.Text == CorrectNumber && label_Check2.Text == CorrectNumber)
             {
                 button_Calculeaza.Enabled = true;
-                _opt.Numar1 = double.Parse(textBox_Numar1.Text);
-                _opt.Numar2 = double.Parse(textBox_Numar2.Text);
+                //Operatii._numar1 = double.Parse(textBox_Numar1.Text);
+                //Operatii._numar2 = double.Parse(textBox_Numar2.Text);
             }
             else
             {
@@ -107,34 +105,34 @@ namespace MyFirsrtWinForm
 
         }
 
-        private static string Adunare(double numar1, double numar2)
-        {
-            var suma = numar1 + numar2;
-            return $"{suma}";
-        }
+        //private static string Adunare(double numar1, double numar2)
+        //{
+        //    var suma = numar1 + numar2;
+        //    return $"{suma}";
+        //}
 
-        private static double Scadere(double numar1, double numar2)
-        {
-            var diferenta = numar1 - numar2;
-            return diferenta;
-        }
+        //private static double Scadere(double numar1, double numar2)
+        //{
+        //    var diferenta = numar1 - numar2;
+        //    return diferenta;
+        //}
 
-        private static double Inmultire(double numar1, double numar2)
-        {
-            var produs = numar1 * numar2;
-            return produs;
-        }
+        //private static double Inmultire(double numar1, double numar2)
+        //{
+        //    var produs = numar1 * numar2;
+        //    return produs;
+        //}
 
-        private static string Impartire(double numar1, double numar2)
-        {
-            if(numar2==0)
-            {
+        //private static string Impartire(double numar1, double numar2)
+        //{
+        //    if(numar2==0)
+        //    {
 
-                return "Nu poti imparti la zero!";
-            }
-            var cat = numar1 / numar2;
-            return cat.ToString();
-        }
+        //        return "Nu poti imparti la zero!";
+        //    }
+        //    var cat = numar1 / numar2;
+        //    return cat.ToString();
+        //}
 
         private void button_Clear_Click(object sender, EventArgs e)
         {

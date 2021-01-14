@@ -12,12 +12,12 @@ namespace CalculatorulMeu
         {
             double numar1 = 14;
             double numar2 = 5;
-            string operatie = "-";
 
-            Operatii Calculator = new Operatii(numar1, numar2);
+            //Operatii Calculator = new Operatii(numar1, numar2);
 
-            Console.WriteLine($"{Calculator.Adunare()}");
+            Console.WriteLine($"{numar1} * {numar2} =");
 
+            Console.WriteLine($"{Operatii.Inmultire(numar1,numar2)}");
 
 
             //    while (ok)

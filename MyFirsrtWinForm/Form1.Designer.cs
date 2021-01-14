@@ -94,7 +94,7 @@ namespace MyFirsrtWinForm
             // label_Adunare
             // 
             this.label_Adunare.AutoSize = true;
-            this.label_Adunare.Location = new System.Drawing.Point(32, 182);
+            this.label_Adunare.Location = new System.Drawing.Point(29, 182);
             this.label_Adunare.Name = "label_Adunare";
             this.label_Adunare.Size = new System.Drawing.Size(47, 13);
             this.label_Adunare.TabIndex = 5;
@@ -121,7 +121,7 @@ namespace MyFirsrtWinForm
             // label_Check1
             // 
             this.label_Check1.AutoSize = true;
-            this.label_Check1.Location = new System.Drawing.Point(32, 97);
+            this.label_Check1.Location = new System.Drawing.Point(29, 97);
             this.label_Check1.Name = "label_Check1";
             this.label_Check1.Size = new System.Drawing.Size(72, 13);
             this.label_Check1.TabIndex = 10;
@@ -159,7 +159,7 @@ namespace MyFirsrtWinForm
             // label_Scadere
             // 
             this.label_Scadere.AutoSize = true;
-            this.label_Scadere.Location = new System.Drawing.Point(35, 241);
+            this.label_Scadere.Location = new System.Drawing.Point(29, 241);
             this.label_Scadere.Name = "label_Scadere";
             this.label_Scadere.Size = new System.Drawing.Size(47, 13);
             this.label_Scadere.TabIndex = 14;
@@ -168,7 +168,7 @@ namespace MyFirsrtWinForm
             // label_Inmultire
             // 
             this.label_Inmultire.AutoSize = true;
-            this.label_Inmultire.Location = new System.Drawing.Point(32, 299);
+            this.label_Inmultire.Location = new System.Drawing.Point(29, 299);
             this.label_Inmultire.Name = "label_Inmultire";
             this.label_Inmultire.Size = new System.Drawing.Size(46, 13);
             this.label_Inmultire.TabIndex = 15;
@@ -177,7 +177,7 @@ namespace MyFirsrtWinForm
             // label_Impartire
             // 
             this.label_Impartire.AutoSize = true;
-            this.label_Impartire.Location = new System.Drawing.Point(35, 350);
+            this.label_Impartire.Location = new System.Drawing.Point(29, 350);
             this.label_Impartire.Name = "label_Impartire";
             this.label_Impartire.Size = new System.Drawing.Size(47, 13);
             this.label_Impartire.TabIndex = 16;
