@@ -68,5 +68,29 @@ namespace CNPWinForm
             var result = int.TryParse(a, out int cifra);
             return result;
         }
+
+        public static bool VerificaAnCNP(string an)
+        {
+            var test = int.TryParse(an, out int anResult);
+
+            if (test)
+            {
+                var currentYear = DateTime.Today.Year;
+
+                if (anResult >= 1800 && anResult <= currentYear)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+            return false;
+        }
+
+        public static string GetAnCNP(string an)
+        {
+            return an.Substring(2, 2);
+        }
     }
 }

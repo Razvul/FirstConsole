@@ -1,0 +1,12 @@
+- inlocuieste toate proprtietatile din clasa OM
+- la fiecare greseala in drapta afiseaza o eroare
+- daca este ok sterge toate label din dreapta si lasa doar un mesaj cu CNP VALID
+- creare buton de creare CNP caler la inceput este disabled
+- dupa ce am apasat pe verifica si totul este ok, desabiliuteaza butonul verifica si toate textbox si abiliteaza butonul Creaza CNP
+
+- creaza functii statice in utilities
+- creaza functie pt verifica an si get an
+- creaza functie pt verifica sex si get sex
+- creaza functie pt ............ -> tot ce iti trebuie
+- creaza o functie pt NNN care sa inti returneze un random intre 1 si 999
+- creaza o functie pentru CC in care sa iti calculeze numarul de control 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,8 +14,6 @@ namespace CNPWinForm
     public partial class Form2 : Form
     {
         private CreateCNP Person;
-        private CNPnew Om = new CNPnew();
-
 
         public Form2()
         {
@@ -22,33 +21,85 @@ namespace CNPWinForm
 
         }
 
+        // ceea ce ai facut aici este bine doar ca in clasa CreateCNP ai foarte multe functii 
+        // noi avem nevoie de o clasa simpla doar cu datele de CNP cum este clasa "CNPnew"
+
+
+        //private void button_Verifica_Click(object sender, EventArgs e)
+        //{
+        //    Person = new CreateCNP(textBox_Sex_Input.Text, textBox_An_Input.Text, textBox_Luna_Input.Text, textBox_Zi_Input.Text);
+
+        //    label_Sex_Output.Text = Person.SEX;
+        //    label_An_Output.Text = Person.AN;
+        //    label_Luna_Output.Text = Person.LUNA;
+        //    label_Zi_Output.Text = Person.ZI;
+        //    label_Judet_Output.Text = Person.JUDET;
+        //    label_CNP_Output.Text = Person.Rezultat;
+
+        //    // verifica daca toate sunt corecte
+        //    // daca nu sunt corecte => mesaj eroare
+
+
+        //    Om.AN = Person.AN;
+        //    //GetYear(textBox_An_Input.Text);
+        //    Om.SEX = Person.SEX;
+        //    //textBox_Sex_Input.Text;
+        //    Om.LUNA = Person.LUNA;
+        //    //textBox_Luna_Input.Text;
+        //    Om.ZI = Person.ZI;
+        //    //textBox_Zi_Input.Text;
+        //    Om.JUDET = Person.JUDET;
+        //    Om.NNN = GetNNN();
+        //    Om.CC = GetCC(Om);
+        //    label_CNP_Output.Text = Om.GetCNP();
+        //}
+
         private void button_Verifica_Click(object sender, EventArgs e)
         {
-            Person = new CreateCNP(textBox_Sex_Input.Text, textBox_An_Input.Text, textBox_Luna_Input.Text, textBox_Zi_Input.Text);
+            bool sex = true; // verifica sex
 
-            label_Sex_Output.Text = Person.SEX;
-            label_An_Output.Text = Person.AN;
-            label_Luna_Output.Text = Person.LUNA;
-            label_Zi_Output.Text = Person.ZI;
-            label_Judet_Output.Text = Person.JUDET;
-            label_CNP_Output.Text = Person.Rezultat;
+            var an = Utilities.VerificaAnCNP(textBox_An_Input.Text);
 
-            // verifica daca toate sunt corecte
-            // daca nu sunt corecte => mesaj eroare
+            bool luna = false; // verifica luna;
+
+            // continua cu verificarile
+
+            if (sex && an && luna) // adaua toate conditiile necesare. conditiile sa fie verificate 
+            {
+                // disable button verifica
+                // disable textbox
+                // enable button calculeaza
+                return;
+            }
+
+            // afiseaza mesaj de eroare 
+            
+
+        }
 
 
-            Om.AN = Person.AN;
-            //GetYear(textBox_An_Input.Text);
-            Om.SEX = Person.SEX;
-            //textBox_Sex_Input.Text;
-            Om.LUNA = Person.LUNA;
-            //textBox_Luna_Input.Text;
-            Om.ZI = Person.ZI;
-            //textBox_Zi_Input.Text;
-            Om.JUDET = Person.JUDET;
-            Om.NNN = GetNNN();
-            Om.CC = GetCC(Om);
-            label_CNP_Output.Text = Om.GetCNP();
+        // in loc de functia asta trebuie sa fie un buton
+        private void CreaareCNP()
+        {
+            CNPnew Om = new CNPnew();
+
+            // Om.SEX = creaza functie in utilities
+
+            //return $"{SEX}{AN}{LUNA}{ZI}{JUDET}{NNN}{CC}";
+            //Om.SEX = "1";
+
+            Om.AN = Utilities.GetAnCNP(textBox_An_Input.Text);
+
+            // Om.LUNA = creaza functie in utilities
+            // Om.ZI = creaza functie in utilities
+            // creaza functiile in continuare 
+
+            // creaza functiile NNN si CC in utilities
+            // functiile astea le ai mai jos trebuie doar sa le muti in utilities
+            // Om.NNN = GetNNN();
+            // Om.CC = GetCC(Om);
+
+
         }
 
         private void button_Clear_Click(object sender, EventArgs e)
@@ -127,12 +178,6 @@ namespace CNPWinForm
             return cifraControl;
         }
 
-        private string GetYear(string an)
-        {
-            string result;
-            result = an.Substring(2, 2);
 
-            return result;
-        }
     }
 }
