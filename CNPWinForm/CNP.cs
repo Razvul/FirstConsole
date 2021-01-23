@@ -164,7 +164,5 @@ namespace CNPWinForm
             string result = dayNumber.ToString();
             return result;
         }
-
-
     }
 }

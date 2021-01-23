@@ -12,41 +12,69 @@ namespace CNPWinForm
 {
     public partial class Form2 : Form
     {
+        private CreateCNP Person;
+        private CNPnew Om = new CNPnew();
+
+
         public Form2()
         {
             InitializeComponent();
+
         }
 
-        private string GetSex(string cuvant)
+        private void button_Verifica_Click(object sender, EventArgs e)
         {
-            GetNNN();
-            string sex;
-            var x = cuvant.ToLower().Trim();
-            if (x == "masculin")
-            {
-                sex = "1";
-            }
-            else if (x == "feminin")
-            {
-                sex = "2";
-            }
-            else
-            {
-                sex = null;
-            }
-            return sex;
+            Person = new CreateCNP(textBox_Sex_Input.Text, textBox_An_Input.Text, textBox_Luna_Input.Text, textBox_Zi_Input.Text);
+
+            label_Sex_Output.Text = Person.SEX;
+            label_An_Output.Text = Person.AN;
+            label_Luna_Output.Text = Person.LUNA;
+            label_Zi_Output.Text = Person.ZI;
+            label_Judet_Output.Text = Person.JUDET;
+            label_CNP_Output.Text = Person.Rezultat;
+
+            // verifica daca toate sunt corecte
+            // daca nu sunt corecte => mesaj eroare
+
+
+            Om.AN = Person.AN;
+            //GetYear(textBox_An_Input.Text);
+            Om.SEX = Person.SEX;
+            //textBox_Sex_Input.Text;
+            Om.LUNA = Person.LUNA;
+            //textBox_Luna_Input.Text;
+            Om.ZI = Person.ZI;
+            //textBox_Zi_Input.Text;
+            Om.JUDET = Person.JUDET;
+            Om.NNN = GetNNN();
+            Om.CC = GetCC(Om);
+            label_CNP_Output.Text = Om.GetCNP();
         }
 
-        //private string GetYear(string cuvant)
-        //{
-        //    // substring(1987)
-        //    // 2001
-        //}
+        private void button_Clear_Click(object sender, EventArgs e)
+        {
+            ClearLabels();
+            ClearTextBox();
+        }
 
-        //private string GetMonth(string cuvant)
-        //{
+        private void ClearLabels()
+        {
+            label_Sex_Output.Text = string.Empty;
+            label_An_Output.Text = string.Empty;
+            label_Luna_Output.Text = string.Empty;
+            label_Zi_Output.Text = string.Empty;
+            label_Judet_Output.Text = string.Empty;
+            label_CNP_Output.Text = string.Empty;
+        }
 
-        //}
+        private void ClearTextBox()
+        {
+            textBox_Sex_Input.Text = string.Empty;
+            textBox_An_Input.Text = string.Empty;
+            textBox_Luna_Input.Text = string.Empty;
+            textBox_Zi_Input.Text = string.Empty;
+            textBox_Judet_Input.Text = string.Empty;
+        }
 
         private string GetNNN()
         {
@@ -69,10 +97,42 @@ namespace CNPWinForm
             return nnn;
         }
 
-        private void button_Creaza_Click(object sender, EventArgs e)
-        {            
-            label_Debug.Text = GetSex(textBox_Sex_Input.Text);
+        private string GetCC(CNPnew Om)
+        {
+            string temp, result;
+            int[] constanta = new int[12] { 2, 7, 9, 1, 4, 6, 3, 5, 8, 2, 7, 9 };
+            temp = $"{Om.SEX}{Om.AN}{Om.LUNA}{Om.ZI}{Om.JUDET}{Om.NNN}";
+
+            var cifra = 0;
+            string cifraControl;
+            var suma = 0;
+
+            for (
+                int i = 0; i < constanta.Length; i++)
+            {
+                cifra = int.Parse(temp.Substring(i, 1));
+                suma = suma + cifra + constanta[i];
+            }
+
+            if (suma % 11 == 10)
+            {
+                cifraControl = "1";
+            }
+            else
+            {
+                cifraControl = (suma % 11).ToString();
+            }
+
+            result = $"{temp}{cifraControl}";
+            return cifraControl;
         }
 
+        private string GetYear(string an)
+        {
+            string result;
+            result = an.Substring(2, 2);
+
+            return result;
+        }
     }
 }

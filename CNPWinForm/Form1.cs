@@ -30,7 +30,6 @@ namespace CNPWinForm
                 label_CNP_value.Text = Corect;
                 EnableAfiseazaButton(true);
                 Person = new CNP(textBox_CNP.Text);
-                //label_CNP_value.Text = Person.Sex;
             }
             else
             {
