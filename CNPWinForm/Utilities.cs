@@ -92,5 +92,156 @@ namespace CNPWinForm
         {
             return an.Substring(2, 2);
         }
+
+        public static bool VerificaSexCNP(string sex)
+        {
+            bool result;
+            switch (sex)
+            {
+                case "1":
+                case "5":
+                case "7":
+                    result = true;
+                    break;
+                case "2":
+                case "6":
+                case "8":
+                    result = true;
+                    break;
+                default:
+                    result = false;
+                    break;
+            }
+            return result;
+        }
+
+        public static bool VerificaLunaCNP(string luna)
+        {
+            bool result;
+            var ok = int.TryParse(luna, out int numar);
+
+            if (ok)
+            {
+                if (numar >= 1 && numar <= 12)
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+            }
+            else
+            {
+                result = false;
+            }
+            
+            return result;
+        }
+
+        public static string GetLunaCNP(string luna)
+        {
+            string result;
+            var numar = int.Parse(luna);
+
+            if (numar >= 1 && numar < 10)
+            {
+                var temp = numar.ToString();
+                result = $"0{temp}";
+            }
+            else if (numar == 11 || numar == 12)
+            {
+                result = numar.ToString();
+            }
+            else
+            {
+                result = null;
+            }
+            return result;
+        }
+
+        public static bool VerificaZiCNP(string zi)
+        {
+            bool result;
+            var ok = int.TryParse(zi, out int numar);
+
+            if(ok)
+            {
+                if (numar >= 1 && numar <= 31)
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+        }
+
+        public static string GetZiCNP(string zi)
+        {
+            return zi;
+        }
+
+        public static string GetJudet()
+        {
+            return "07";
+        }
+
+        public static string GetNNN()
+        {
+            string nnn;
+            var rnd = new Random();
+            var x = rnd.Next(1, 1000);
+
+            if (x < 10)
+            {
+                nnn = $"00{x}";
+            }
+            else if (x < 100)
+            {
+                nnn = $"0{x}";
+            }
+            else
+            {
+                nnn = x.ToString();
+            }
+            return nnn;
+        }
+
+        public static string GetCC(CNPnew Om)
+        {
+            string temp, result;
+            int[] constanta = new int[12] { 2, 7, 9, 1, 4, 6, 3, 5, 8, 2, 7, 9 };
+            temp = $"{Om.SEX}{Om.AN}{Om.LUNA}{Om.ZI}{Om.JUDET}{Om.NNN}";
+
+            var cifra = 0;
+            string cifraControl;
+            var suma = 0;
+
+            for (
+                int i = 0; i < constanta.Length; i++)
+            {
+                cifra = int.Parse(temp.Substring(i, 1));
+                suma = suma + cifra + constanta[i];
+            }
+
+            if (suma % 11 == 10)
+            {
+                cifraControl = "1";
+            }
+            else
+            {
+                cifraControl = (suma % 11).ToString();
+            }
+
+            result = $"{temp}{cifraControl}";
+            return cifraControl;
+        }
     }
 }

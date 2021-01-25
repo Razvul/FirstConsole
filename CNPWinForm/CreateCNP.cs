@@ -30,13 +30,6 @@ namespace CNPWinForm
             _an = an;
             _luna = luna;
             _zi = zi;
-
-            //GetSex();
-            //GetYear();
-            //GetMonth();
-            //GetDay();
-            //GetJudet();
-            //GetNNN();
             Populate();
         }
 
@@ -72,10 +65,10 @@ namespace CNPWinForm
         private string GetYear()
         {
             string result;
-            var numar = int.Parse(_an);
-            int temp = numar - 1900;
-            //result = _an.Substring(2, 2);
-            result = temp.ToString();
+            //var numar = int.Parse(_an);
+            //int temp = numar - 1900;
+            result = _an.Substring(2, 2);
+            //result = temp.ToString();
             return result;
         }
 
@@ -151,7 +144,7 @@ namespace CNPWinForm
 
         private string GetJudet()
         {
-            string result = "Botosani";
+            //string result = "Botosani";
             //if (cuvant == "Botosani")
             //{
             //    result = "07";

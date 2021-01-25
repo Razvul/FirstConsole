@@ -48,6 +48,7 @@ namespace CNPWinForm
             this.button_Clear = new System.Windows.Forms.Button();
             this.label_CNP = new System.Windows.Forms.Label();
             this.label_CNP_Output = new System.Windows.Forms.Label();
+            this.button_Creaza = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_Verifica
@@ -79,7 +80,7 @@ namespace CNPWinForm
             // label_Sex_Output
             // 
             this.label_Sex_Output.AutoSize = true;
-            this.label_Sex_Output.Location = new System.Drawing.Point(641, 58);
+            this.label_Sex_Output.Location = new System.Drawing.Point(641, 63);
             this.label_Sex_Output.Name = "label_Sex_Output";
             this.label_Sex_Output.Size = new System.Drawing.Size(60, 13);
             this.label_Sex_Output.TabIndex = 3;
@@ -213,11 +214,22 @@ namespace CNPWinForm
             this.label_CNP_Output.TabIndex = 18;
             this.label_CNP_Output.Text = "CNP_Output";
             // 
+            // button_Creaza
+            // 
+            this.button_Creaza.Location = new System.Drawing.Point(300, 352);
+            this.button_Creaza.Name = "button_Creaza";
+            this.button_Creaza.Size = new System.Drawing.Size(75, 23);
+            this.button_Creaza.TabIndex = 19;
+            this.button_Creaza.Text = "Creaza";
+            this.button_Creaza.UseVisualStyleBackColor = true;
+            this.button_Creaza.Click += new System.EventHandler(this.button_Creaza_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_Creaza);
             this.Controls.Add(this.label_CNP_Output);
             this.Controls.Add(this.label_CNP);
             this.Controls.Add(this.button_Clear);
@@ -265,5 +277,6 @@ namespace CNPWinForm
         private System.Windows.Forms.Button button_Clear;
         private System.Windows.Forms.Label label_CNP;
         private System.Windows.Forms.Label label_CNP_Output;
+        private System.Windows.Forms.Button button_Creaza;
     }
 }

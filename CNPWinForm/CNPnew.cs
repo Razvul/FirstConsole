@@ -29,7 +29,5 @@ namespace CNPWinForm
         // JUDET = 07
         // NNN = trebuie sa il calculez. e un random de la 1 la 999
         // CC = cifra de control calculata
-
-
     }
 }

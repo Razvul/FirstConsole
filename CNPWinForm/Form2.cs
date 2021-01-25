@@ -13,17 +13,19 @@ namespace CNPWinForm
 {
     public partial class Form2 : Form
     {
-        private CreateCNP Person;
+        //private CreateCNP Person;
+        private string Corect = "Corect";
+        private string Gresit = "Gresit";
 
         public Form2()
         {
             InitializeComponent();
-
+            button_Creaza.Enabled = false;
+            ClearLabels();
         }
 
         // ceea ce ai facut aici este bine doar ca in clasa CreateCNP ai foarte multe functii 
         // noi avem nevoie de o clasa simpla doar cu datele de CNP cum este clasa "CNPnew"
-
 
         //private void button_Verifica_Click(object sender, EventArgs e)
         //{
@@ -38,45 +40,84 @@ namespace CNPWinForm
 
         //    // verifica daca toate sunt corecte
         //    // daca nu sunt corecte => mesaj eroare
-
-
-        //    Om.AN = Person.AN;
-        //    //GetYear(textBox_An_Input.Text);
-        //    Om.SEX = Person.SEX;
-        //    //textBox_Sex_Input.Text;
-        //    Om.LUNA = Person.LUNA;
-        //    //textBox_Luna_Input.Text;
-        //    Om.ZI = Person.ZI;
-        //    //textBox_Zi_Input.Text;
-        //    Om.JUDET = Person.JUDET;
-        //    Om.NNN = GetNNN();
-        //    Om.CC = GetCC(Om);
-        //    label_CNP_Output.Text = Om.GetCNP();
         //}
 
         private void button_Verifica_Click(object sender, EventArgs e)
         {
-            bool sex = true; // verifica sex
-
-            var an = Utilities.VerificaAnCNP(textBox_An_Input.Text);
-
-            bool luna = false; // verifica luna;
-
             // continua cu verificarile
 
-            if (sex && an && luna) // adaua toate conditiile necesare. conditiile sa fie verificate 
+            if (Utilities.VerificaSexCNP(textBox_Sex_Input.Text)) // adaua toate conditiile necesare. conditiile sa fie verificate 
             {
+                label_Sex_Output.Text = Corect;
                 // disable button verifica
                 // disable textbox
                 // enable button calculeaza
-                return;
+            }
+            else
+            {
+                label_Sex_Output.Text = Gresit;
             }
 
-            // afiseaza mesaj de eroare 
-            
+            if(Utilities.VerificaAnCNP(textBox_An_Input.Text))
+            {
+                label_An_Output.Text = Corect;
+            }
+            else
+            {
+                label_An_Output.Text = Gresit;
+            }
 
+            if(Utilities.VerificaLunaCNP(textBox_Luna_Input.Text))
+            {
+                label_Luna_Output.Text = Corect;
+            }
+            else
+            {
+                label_Luna_Output.Text = Gresit;
+            }
+
+            if(Utilities.VerificaZiCNP(textBox_Zi_Input.Text))
+            {
+                label_Zi_Output.Text = Corect;
+            }
+            else
+            {
+                label_Zi_Output.Text = Gresit;
+            }
+            // afiseaza mesaj de eroare
+            button_Creaza.Enabled = true;
         }
 
+        private void button_Creaza_Click(object sender, EventArgs e)
+        {
+            if (label_Sex_Output.Text == Corect &&
+                label_An_Output.Text == Corect &&
+                label_Luna_Output.Text == Corect &&
+                label_Zi_Output.Text == Corect)
+            {
+                button_Creaza.Enabled = true;
+
+                ClearLabels();
+                TextBoxesEnable(false);
+                button_Verifica.Enabled = false;
+
+                var Human = new CNPnew();
+
+                Human.SEX = textBox_Sex_Input.Text;
+                Human.AN = Utilities.GetAnCNP(textBox_An_Input.Text);
+                Human.LUNA = Utilities.GetLunaCNP(textBox_Luna_Input.Text);
+                Human.ZI = Utilities.GetZiCNP(textBox_Zi_Input.Text);
+                Human.JUDET = Utilities.GetJudet();
+                Human.NNN = Utilities.GetNNN();
+                Human.CC = Utilities.GetCC(Human);
+
+                label_CNP_Output.Text = Human.GetCNP();
+            }
+            else
+            {
+                button_Creaza.Enabled = false;
+            }
+        }
 
         // in loc de functia asta trebuie sa fie un buton
         private void CreaareCNP()
@@ -98,14 +139,13 @@ namespace CNPWinForm
             // functiile astea le ai mai jos trebuie doar sa le muti in utilities
             // Om.NNN = GetNNN();
             // Om.CC = GetCC(Om);
-
-
         }
 
         private void button_Clear_Click(object sender, EventArgs e)
         {
             ClearLabels();
             ClearTextBox();
+            TextBoxesEnable(true);
         }
 
         private void ClearLabels()
@@ -127,57 +167,13 @@ namespace CNPWinForm
             textBox_Judet_Input.Text = string.Empty;
         }
 
-        private string GetNNN()
+        private void TextBoxesEnable(bool value)
         {
-            string nnn;
-            var rnd = new Random();
-            var x = rnd.Next(1, 1000);
-
-            if (x < 10)
-            {
-                nnn = $"00{x}";
-            }
-            else if (x < 100)
-            {
-                nnn = $"0{x}";
-            }
-            else
-            {
-                nnn = x.ToString();
-            }
-            return nnn;
+            textBox_Sex_Input.Enabled = value;
+            textBox_An_Input.Enabled = value;
+            textBox_Luna_Input.Enabled = value;
+            textBox_Zi_Input.Enabled = value;
+            textBox_Judet_Input.Enabled = value;
         }
-
-        private string GetCC(CNPnew Om)
-        {
-            string temp, result;
-            int[] constanta = new int[12] { 2, 7, 9, 1, 4, 6, 3, 5, 8, 2, 7, 9 };
-            temp = $"{Om.SEX}{Om.AN}{Om.LUNA}{Om.ZI}{Om.JUDET}{Om.NNN}";
-
-            var cifra = 0;
-            string cifraControl;
-            var suma = 0;
-
-            for (
-                int i = 0; i < constanta.Length; i++)
-            {
-                cifra = int.Parse(temp.Substring(i, 1));
-                suma = suma + cifra + constanta[i];
-            }
-
-            if (suma % 11 == 10)
-            {
-                cifraControl = "1";
-            }
-            else
-            {
-                cifraControl = (suma % 11).ToString();
-            }
-
-            result = $"{temp}{cifraControl}";
-            return cifraControl;
-        }
-
-
     }
 }
