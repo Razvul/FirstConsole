@@ -44,14 +44,9 @@ namespace CNPWinForm
 
         private void button_Verifica_Click(object sender, EventArgs e)
         {
-            // continua cu verificarile
-
-            if (Utilities.VerificaSexCNP(textBox_Sex_Input.Text)) // adaua toate conditiile necesare. conditiile sa fie verificate 
+            if (Utilities.VerificaSexCNP(textBox_Sex_Input.Text))
             {
                 label_Sex_Output.Text = Corect;
-                // disable button verifica
-                // disable textbox
-                // enable button calculeaza
             }
             else
             {
@@ -76,7 +71,7 @@ namespace CNPWinForm
                 label_Luna_Output.Text = Gresit;
             }
 
-            if(Utilities.VerificaZiCNP(textBox_Zi_Input.Text))
+            if (Utilities.VerificaZiCNP(textBox_Zi_Input.Text, textBox_Luna_Input.Text, textBox_An_Input.Text))
             {
                 label_Zi_Output.Text = Corect;
             }
@@ -84,26 +79,29 @@ namespace CNPWinForm
             {
                 label_Zi_Output.Text = Gresit;
             }
-            // afiseaza mesaj de eroare
-            button_Creaza.Enabled = true;
-        }
 
-        private void button_Creaza_Click(object sender, EventArgs e)
-        {
             if (label_Sex_Output.Text == Corect &&
                 label_An_Output.Text == Corect &&
                 label_Luna_Output.Text == Corect &&
                 label_Zi_Output.Text == Corect)
             {
                 button_Creaza.Enabled = true;
+            }
+            else
+            {
+                button_Creaza.Enabled = false;
+            }
+        }
 
+        private void button_Creaza_Click(object sender, EventArgs e)
+        {
                 ClearLabels();
                 TextBoxesEnable(false);
                 button_Verifica.Enabled = false;
 
                 var Human = new CNPnew();
 
-                Human.SEX = textBox_Sex_Input.Text;
+                Human.SEX = Utilities.GetSexCNP(textBox_Sex_Input.Text);
                 Human.AN = Utilities.GetAnCNP(textBox_An_Input.Text);
                 Human.LUNA = Utilities.GetLunaCNP(textBox_Luna_Input.Text);
                 Human.ZI = Utilities.GetZiCNP(textBox_Zi_Input.Text);
@@ -112,33 +110,6 @@ namespace CNPWinForm
                 Human.CC = Utilities.GetCC(Human);
 
                 label_CNP_Output.Text = Human.GetCNP();
-            }
-            else
-            {
-                button_Creaza.Enabled = false;
-            }
-        }
-
-        // in loc de functia asta trebuie sa fie un buton
-        private void CreaareCNP()
-        {
-            CNPnew Om = new CNPnew();
-
-            // Om.SEX = creaza functie in utilities
-
-            //return $"{SEX}{AN}{LUNA}{ZI}{JUDET}{NNN}{CC}";
-            //Om.SEX = "1";
-
-            Om.AN = Utilities.GetAnCNP(textBox_An_Input.Text);
-
-            // Om.LUNA = creaza functie in utilities
-            // Om.ZI = creaza functie in utilities
-            // creaza functiile in continuare 
-
-            // creaza functiile NNN si CC in utilities
-            // functiile astea le ai mai jos trebuie doar sa le muti in utilities
-            // Om.NNN = GetNNN();
-            // Om.CC = GetCC(Om);
         }
 
         private void button_Clear_Click(object sender, EventArgs e)
@@ -146,6 +117,8 @@ namespace CNPWinForm
             ClearLabels();
             ClearTextBox();
             TextBoxesEnable(true);
+            button_Creaza.Enabled = false;
+            button_Verifica.Enabled = true;
         }
 
         private void ClearLabels()

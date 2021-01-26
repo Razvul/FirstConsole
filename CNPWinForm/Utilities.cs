@@ -62,6 +62,51 @@ namespace CNPWinForm
                 return false;
             }
         }
+        public static bool VerificaSexCNP(string sex)
+        {
+            bool result;
+            switch (sex)
+            {
+                case "1":
+                case "5":
+                case "7":
+                    result = true;
+                    break;
+                case "2":
+                case "6":
+                case "8":
+                    result = true;
+                    break;
+                default:
+                    result = false;
+                    break;
+            }
+            return result;
+        }
+
+        public static string GetSexCNP(string sex)
+        {
+            string result;
+            var ok = int.TryParse(sex, out int numar);
+
+            if(ok)
+            {
+                if (numar >= 1 && numar <= 8)
+                {
+                    result = sex;
+                }
+                else
+                {
+                    result = null;
+                }
+            }
+            else
+            {
+                result = null;
+            }
+            return result;
+        }
+
 
         public static bool IsInteger(string a)
         {
@@ -91,28 +136,6 @@ namespace CNPWinForm
         public static string GetAnCNP(string an)
         {
             return an.Substring(2, 2);
-        }
-
-        public static bool VerificaSexCNP(string sex)
-        {
-            bool result;
-            switch (sex)
-            {
-                case "1":
-                case "5":
-                case "7":
-                    result = true;
-                    break;
-                case "2":
-                case "6":
-                case "8":
-                    result = true;
-                    break;
-                default:
-                    result = false;
-                    break;
-            }
-            return result;
         }
 
         public static bool VerificaLunaCNP(string luna)
@@ -160,14 +183,36 @@ namespace CNPWinForm
             return result;
         }
 
-        public static bool VerificaZiCNP(string zi)
+        public static bool VerificaZiCNP(string zi, string luna, string an)
         {
             bool result;
-            var ok = int.TryParse(zi, out int numar);
+            var ok = int.TryParse(zi, out int ziNumar);
+            var lunaNumar = int.Parse(luna);
+            var anNumar = int.Parse(an);
+            int zimax = 0;
 
             if(ok)
             {
-                if (numar >= 1 && numar <= 31)
+                if(lunaNumar == 1 || lunaNumar == 3 || lunaNumar == 5 || lunaNumar == 7 || lunaNumar == 8 || lunaNumar == 10 || lunaNumar == 12)
+                {
+                    zimax = 31;
+                }
+                else if(lunaNumar == 4 || lunaNumar == 6 || lunaNumar == 9 || lunaNumar == 11)
+                {
+                    zimax = 30;
+                }
+                else
+                {
+                    if (anNumar % 4 == 0)
+                    {
+                        zimax = 29;
+                    }
+                    else
+                    {
+                        zimax = 28;
+                    }
+                }
+                if (ziNumar >= 1 && ziNumar <= zimax)
                 {
                     result = true;
                 }
@@ -185,7 +230,16 @@ namespace CNPWinForm
 
         public static string GetZiCNP(string zi)
         {
-            return zi;
+            var numar = int.Parse(zi);
+
+            if (numar > 0 && numar < 10)
+            {
+                return $"0{zi}";
+            }
+            else
+            {
+                return zi;
+            }
         }
 
         public static string GetJudet()
