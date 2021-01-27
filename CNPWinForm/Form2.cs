@@ -13,7 +13,6 @@ namespace CNPWinForm
 {
     public partial class Form2 : Form
     {
-        //private CreateCNP Person;
         private string Corect = "Corect";
         private string Gresit = "Gresit";
 
@@ -23,24 +22,6 @@ namespace CNPWinForm
             button_Creaza.Enabled = false;
             ClearLabels();
         }
-
-        // ceea ce ai facut aici este bine doar ca in clasa CreateCNP ai foarte multe functii 
-        // noi avem nevoie de o clasa simpla doar cu datele de CNP cum este clasa "CNPnew"
-
-        //private void button_Verifica_Click(object sender, EventArgs e)
-        //{
-        //    Person = new CreateCNP(textBox_Sex_Input.Text, textBox_An_Input.Text, textBox_Luna_Input.Text, textBox_Zi_Input.Text);
-
-        //    label_Sex_Output.Text = Person.SEX;
-        //    label_An_Output.Text = Person.AN;
-        //    label_Luna_Output.Text = Person.LUNA;
-        //    label_Zi_Output.Text = Person.ZI;
-        //    label_Judet_Output.Text = Person.JUDET;
-        //    label_CNP_Output.Text = Person.Rezultat;
-
-        //    // verifica daca toate sunt corecte
-        //    // daca nu sunt corecte => mesaj eroare
-        //}
 
         private void button_Verifica_Click(object sender, EventArgs e)
         {

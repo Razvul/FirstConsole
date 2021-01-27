@@ -15,11 +15,6 @@ namespace MyFirsrtWinForm
         private const string ErrorNumber = "What the !@#$ is this? This ain't no number!";
         private const string CorrectNumber = "Corect";
 
-        private bool isCorrectNumber;
-
-        //Operatii Calculator = new Operatii(textBox_Numar1.Text, numar2);
-
-        
 
         public Form1()
         {
@@ -55,8 +50,7 @@ namespace MyFirsrtWinForm
 
         private void button_Calculeaza_Click(object sender, EventArgs e)
         {
-
-            //label_Adunare_value.Text = $@"{_opt.Adunare()}";
+            button_Verifica.Enabled = false;
 
             label_Adunare_value.Text = Operatii.Adunare(Numar(textBox_Numar1.Text), Numar(textBox_Numar2.Text)).ToString();
 
@@ -93,50 +87,18 @@ namespace MyFirsrtWinForm
             if (label_Check1.Text == CorrectNumber && label_Check2.Text == CorrectNumber)
             {
                 button_Calculeaza.Enabled = true;
-                //Operatii._numar1 = double.Parse(textBox_Numar1.Text);
-                //Operatii._numar2 = double.Parse(textBox_Numar2.Text);
             }
             else
             {
-                // nu imi trebuie pentru ca butonul de calculeaza = disable
-                //_opt.Numar1 = 0;
-                //_opt.Numar2 = 0;
+
             }
-
+            button_Verifica.Enabled = false;
         }
-
-        //private static string Adunare(double numar1, double numar2)
-        //{
-        //    var suma = numar1 + numar2;
-        //    return $"{suma}";
-        //}
-
-        //private static double Scadere(double numar1, double numar2)
-        //{
-        //    var diferenta = numar1 - numar2;
-        //    return diferenta;
-        //}
-
-        //private static double Inmultire(double numar1, double numar2)
-        //{
-        //    var produs = numar1 * numar2;
-        //    return produs;
-        //}
-
-        //private static string Impartire(double numar1, double numar2)
-        //{
-        //    if(numar2==0)
-        //    {
-
-        //        return "Nu poti imparti la zero!";
-        //    }
-        //    var cat = numar1 / numar2;
-        //    return cat.ToString();
-        //}
 
         private void button_Clear_Click(object sender, EventArgs e)
         {
             ClearAll();
+            button_Verifica.Enabled = true;
         }
 
         private void ClearLabels()
@@ -161,7 +123,6 @@ namespace MyFirsrtWinForm
             ClearTextBox();
             ClearLabels();
         }
-
 
         private bool IsNumber(string cuvant)
         {
@@ -198,7 +159,5 @@ namespace MyFirsrtWinForm
         {
             button_Calculeaza.Enabled = value;
         }
-
-
     }
 }
