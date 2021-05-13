@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFirsrtWinForm", "MyFirsrt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNPWinForm", "CNPWinForm\CNPWinForm.csproj", "{89806413-CB7D-4AFA-BD7C-268CA32EBBAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuessNumber", "GuessNumber\GuessNumber.csproj", "{EECCEE65-EB0F-4779-A56B-176680DAF79E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{89806413-CB7D-4AFA-BD7C-268CA32EBBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89806413-CB7D-4AFA-BD7C-268CA32EBBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89806413-CB7D-4AFA-BD7C-268CA32EBBAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EECCEE65-EB0F-4779-A56B-176680DAF79E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EECCEE65-EB0F-4779-A56B-176680DAF79E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EECCEE65-EB0F-4779-A56B-176680DAF79E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EECCEE65-EB0F-4779-A56B-176680DAF79E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

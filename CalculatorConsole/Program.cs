@@ -49,6 +49,7 @@ namespace CalculatorConsole
                 else
                 {
                     Console.WriteLine("You have used the wrong operation");
+                    continue;
                 }
             }
 
