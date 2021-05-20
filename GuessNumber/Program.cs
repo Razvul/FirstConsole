@@ -54,6 +54,7 @@ namespace GuessNumber
                     }
                 }
             }
+            Console.ReadLine();
         }
     }
 }
